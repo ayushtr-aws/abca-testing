@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "jira-server": {
+      "type": "http",
+      "url": "https://mcp.atlassian.com/v1/sse",
+      "headers": {
+        "Authorization": "Bearer ${JIRA_API_TOKEN}"
+      }
+    }
+  }
+}
