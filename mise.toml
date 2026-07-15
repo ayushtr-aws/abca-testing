@@ -1,0 +1,17 @@
+[tools]
+node = "24"
+
+[tasks.build]
+description = "Build the soccer app"
+dir = "soccer-app"
+run = "npm run build"
+
+[tasks.lint]
+description = "Lint the soccer app"
+dir = "soccer-app"
+run = "npm run lint"
+
+[tasks.dev]
+description = "Start the development server"
+dir = "soccer-app"
+run = "npm run dev"
