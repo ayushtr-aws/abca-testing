@@ -610,6 +610,21 @@
   width: 40px;
 }
 
+.player-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #334155;
+}
+
 .player-name {
   font-weight: 600;
   color: #f1f5f9;

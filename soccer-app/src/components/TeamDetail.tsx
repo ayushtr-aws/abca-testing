@@ -174,7 +174,7 @@ export function TeamDetail({ team }: TeamDetailProps) {
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
+                  <th>Player</th>
                   <th>Pos</th>
                   <th>Age</th>
                   <th>Nationality</th>
@@ -186,7 +186,14 @@ export function TeamDetail({ team }: TeamDetailProps) {
                 {sortedPlayers.map((player) => (
                   <tr key={player.id}>
                     <td className="player-number">{player.number}</td>
-                    <td className="player-name">{player.name}</td>
+                    <td className="player-name-cell">
+                      <img
+                        src={player.imageUrl}
+                        alt={player.name}
+                        className="player-avatar"
+                      />
+                      <span className="player-name">{player.name}</span>
+                    </td>
                     <td>
                       <span
                         className="position-badge"
