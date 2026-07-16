@@ -142,7 +142,7 @@ export const teams: Team[] = [
       { id: 29, name: "Pedri", number: 8, position: "CM", nationality: "Spain", age: 21, goals: 9, assists: 7, imageUrl: "https://ui-avatars.com/api/?name=Pedri+Gonzalez&background=c60b1e&color=ffffff&size=64&bold=true" },
       { id: 30, name: "Gavi", number: 6, position: "CM", nationality: "Spain", age: 19, goals: 5, assists: 9, imageUrl: "https://ui-avatars.com/api/?name=Gavi+Paez&background=c60b1e&color=ffffff&size=64&bold=true" },
       { id: 31, name: "Lamine Yamal", number: 27, position: "RW", nationality: "Spain", age: 16, goals: 15, assists: 18, imageUrl: "https://ui-avatars.com/api/?name=Lamine+Yamal&background=c60b1e&color=ffffff&size=64&bold=true" },
-      { id: 32, name: "Raphinha", number: 11, position: "LW", nationality: "Brazil", age: 27, goals: 27, assists: 12, imageUrl: "https://ui-avatars.com/api/?name=Raphinha+Belloli&background=009c3b&color=ffffff&size=64&bold=true" },
+      { id: 32, name: "Raphinha", number: 11, position: "LW", nationality: "Brazil", age: 27, goals: 27, assists: 12, imageUrl: "/raphinha.jpeg" },
       { id: 33, name: "Robert Lewandowski", number: 9, position: "ST", nationality: "Poland", age: 35, goals: 24, assists: 10, imageUrl: "https://ui-avatars.com/api/?name=Robert+Lewandowski&background=dc143c&color=ffffff&size=64&bold=true" },
     ],
   },
@@ -179,7 +179,7 @@ export const teams: Team[] = [
       { id: 41, name: "Jamal Musiala", number: 42, position: "AM", nationality: "Germany", age: 21, goals: 18, assists: 10, imageUrl: "https://ui-avatars.com/api/?name=Jamal+Musiala&background=000000&color=ffffff&size=64&bold=true" },
       { id: 42, name: "Leroy Sané", number: 10, position: "RW", nationality: "Germany", age: 28, goals: 14, assists: 11, imageUrl: "https://ui-avatars.com/api/?name=Leroy+Sane&background=000000&color=ffffff&size=64&bold=true" },
       { id: 43, name: "Serge Gnabry", number: 7, position: "LW", nationality: "Germany", age: 28, goals: 11, assists: 6, imageUrl: "https://ui-avatars.com/api/?name=Serge+Gnabry&background=000000&color=ffffff&size=64&bold=true" },
-      { id: 44, name: "Harry Kane", number: 9, position: "ST", nationality: "England", age: 30, goals: 44, assists: 12, imageUrl: "https://ui-avatars.com/api/?name=Harry+Kane&background=cf1020&color=ffffff&size=64&bold=true" },
+      { id: 44, name: "Harry Kane", number: 9, position: "ST", nationality: "England", age: 30, goals: 44, assists: 12, imageUrl: "/harry-kane.jpeg" },
     ],
   },
   {
