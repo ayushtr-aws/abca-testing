@@ -10,16 +10,16 @@ function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("points");
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Apply / remove the light-mode class on <html> whenever the toggle changes
+  // Apply / remove the dark-mode class on <html> whenever the toggle changes
   useEffect(() => {
-    if (isLightMode) {
-      document.documentElement.classList.add("light-mode");
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark-mode");
     } else {
-      document.documentElement.classList.remove("light-mode");
+      document.documentElement.classList.remove("dark-mode");
     }
-  }, [isLightMode]);
+  }, [isDarkMode]);
 
   const selectedTeam = teams.find((t) => t.id === selectedTeamId) ?? teams[0];
 
@@ -59,11 +59,11 @@ function App() {
           <span className="team-count">{teams.length} Teams</span>
           <button
             className="theme-toggle"
-            onClick={() => setIsLightMode((prev) => !prev)}
-            aria-label={isLightMode ? "Switch to dark mode" : "Switch to light mode"}
+            onClick={() => setIsDarkMode((prev) => !prev)}
+            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
           >
-            <span className="theme-toggle-icon">{isLightMode ? "🌙" : "☀️"}</span>
-            {isLightMode ? "Dark mode" : "Light mode"}
+            <span className="theme-toggle-icon">{isDarkMode ? "☀️" : "🌙"}</span>
+            {isDarkMode ? "Light mode" : "Dark mode"}
           </button>
         </div>
       </header>
