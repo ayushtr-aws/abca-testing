@@ -1,6 +1,6 @@
 [readme]
 
-## seeing how long i can add to the board
+## attachments verification
 
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
 Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
