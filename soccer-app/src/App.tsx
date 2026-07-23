@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { teams } from "./data/teams";
 import { TeamCard } from "./components/TeamCard";
 import { TeamDetail } from "./components/TeamDetail";
@@ -10,6 +10,16 @@ function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("points");
+  const [isLightMode, setIsLightMode] = useState(false);
+
+  // Apply / remove the light-mode class on <html> whenever the toggle changes
+  useEffect(() => {
+    if (isLightMode) {
+      document.documentElement.classList.add("light-mode");
+    } else {
+      document.documentElement.classList.remove("light-mode");
+    }
+  }, [isLightMode]);
 
   const selectedTeam = teams.find((t) => t.id === selectedTeamId) ?? teams[0];
 
@@ -47,6 +57,14 @@ function App() {
         </div>
         <div className="header-right">
           <span className="team-count">{teams.length} Teams</span>
+          <button
+            className="theme-toggle"
+            onClick={() => setIsLightMode((prev) => !prev)}
+            aria-label={isLightMode ? "Switch to dark mode" : "Switch to light mode"}
+          >
+            <span className="theme-toggle-icon">{isLightMode ? "🌙" : "☀️"}</span>
+            {isLightMode ? "Dark mode" : "Light mode"}
+          </button>
         </div>
       </header>
 
