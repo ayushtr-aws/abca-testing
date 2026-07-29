@@ -70,16 +70,6 @@ mise run lint
         └── raphinha.jpeg
 ```
 
-## Teams Included
-
-| Team | League | Country |
-|------|--------|---------|
-| Real Madrid | La Liga | Spain |
-| Manchester City | Premier League | England |
-| FC Barcelona | La Liga | Spain |
-| Bayern Munich | Bundesliga | Germany |
-| PSG | Ligue 1 | France |
-
 ## Contributing
 
 Contributions are welcome! Please open a pull request and add yourself to [CONTRIBUTORS.md](./CONTRIBUTORS.md).
