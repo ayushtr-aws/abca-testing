@@ -1,0 +1,5 @@
+Jira integration end-to-end test passed.
+
+Validation task: SCRUM-35 [ABCA validation] Jira admission test
+Date: 2026-08-04
+Result: PASS — the Jira integration end-to-end test completed successfully.
