@@ -2,6 +2,7 @@ import { useState } from "react";
 import { teams } from "./data/teams";
 import { TeamCard } from "./components/TeamCard";
 import { TeamDetail } from "./components/TeamDetail";
+import { ThemeToggle } from "./components/ThemeToggle";
 import "./App.css";
 
 type SortKey = "points" | "goals" | "name" | "league";
@@ -47,6 +48,7 @@ function App() {
         </div>
         <div className="header-right">
           <span className="team-count">{teams.length} Teams</span>
+          <ThemeToggle />
         </div>
       </header>
 
