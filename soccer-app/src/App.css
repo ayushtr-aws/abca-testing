@@ -99,6 +99,125 @@
   border-color: #3b82f6;
 }
 
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.country-filter {
+  flex: 1;
+  box-sizing: border-box;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.country-filter:focus {
+  border-color: #3b82f6;
+}
+
+.country-filter:focus-visible {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+}
+
+.active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #334155;
+}
+
+.active-filters-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-right: 2px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #172554;
+  border: 1px solid #3b82f6;
+  color: #bfdbfe;
+  padding: 2px 4px 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  max-width: 140px;
+}
+
+.filter-chip-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #bfdbfe;
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filter-chip-remove:hover {
+  background: #1e40af;
+  color: #fff;
+}
+
+.filter-chip-remove:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+}
+
+.clear-filters-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.clear-filters-btn:hover {
+  color: #e2e8f0;
+}
+
+.clear-filters-btn:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+  color: #e2e8f0;
+}
+
 .sort-controls {
   display: flex;
   align-items: center;

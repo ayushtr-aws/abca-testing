@@ -2,17 +2,34 @@ import { useState } from "react";
 import { teams } from "./data/teams";
 import { TeamCard } from "./components/TeamCard";
 import { TeamDetail } from "./components/TeamDetail";
-import { queryTeams, type SortKey } from "./utils/teamQuery";
+import {
+  queryTeams,
+  getCountries,
+  ALL_COUNTRIES,
+  type SortKey,
+} from "./utils/teamQuery";
 import "./App.css";
 
 function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("points");
+  const [country, setCountry] = useState<string>(ALL_COUNTRIES);
 
+  const countries = getCountries(teams);
   const selectedTeam = teams.find((t) => t.id === selectedTeamId) ?? teams[0];
 
-  const filteredTeams = queryTeams(teams, searchQuery, sortKey);
+  const filteredTeams = queryTeams(teams, searchQuery, sortKey, country);
+
+  const trimmedSearch = searchQuery.trim();
+  const hasSearchFilter = trimmedSearch !== "";
+  const hasCountryFilter = country !== ALL_COUNTRIES;
+  const hasActiveFilters = hasSearchFilter || hasCountryFilter;
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setCountry(ALL_COUNTRIES);
+  };
 
   return (
     <div className="app">
@@ -39,6 +56,31 @@ function App() {
               onChange={(e) => setSearchQuery(e.target.value)}
               className="search-input"
             />
+            <div className="filter-controls">
+              <label htmlFor="country-filter" className="filter-label">
+                Country:
+              </label>
+              <select
+                id="country-filter"
+                className="country-filter"
+                aria-label="Filter teams by country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape" && country !== ALL_COUNTRIES) {
+                    e.preventDefault();
+                    setCountry(ALL_COUNTRIES);
+                  }
+                }}
+              >
+                <option value={ALL_COUNTRIES}>All countries</option>
+                {countries.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </div>
             <div className="sort-controls">
               <span className="sort-label">Sort by:</span>
               {(["points", "goals", "name", "league"] as SortKey[]).map((key) => (
@@ -51,6 +93,52 @@ function App() {
                 </button>
               ))}
             </div>
+
+            {hasActiveFilters && (
+              <div
+                className="active-filters"
+                role="status"
+                aria-live="polite"
+              >
+                <span className="active-filters-label">
+                  {filteredTeams.length}{" "}
+                  {filteredTeams.length === 1 ? "team" : "teams"}
+                </span>
+                {hasCountryFilter && (
+                  <span className="filter-chip">
+                    {country}
+                    <button
+                      type="button"
+                      className="filter-chip-remove"
+                      aria-label={`Clear country filter: ${country}`}
+                      onClick={() => setCountry(ALL_COUNTRIES)}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {hasSearchFilter && (
+                  <span className="filter-chip">
+                    “{trimmedSearch}”
+                    <button
+                      type="button"
+                      className="filter-chip-remove"
+                      aria-label={`Clear search filter: ${trimmedSearch}`}
+                      onClick={() => setSearchQuery("")}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                <button
+                  type="button"
+                  className="clear-filters-btn"
+                  onClick={clearFilters}
+                >
+                  Clear all
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="team-list">
@@ -66,7 +154,11 @@ function App() {
             ) : (
               <div className="no-results">
                 <span>🔍</span>
-                <p>No teams found for "{searchQuery}"</p>
+                <p>
+                  {searchQuery
+                    ? `No teams found for "${searchQuery}"`
+                    : "No teams match the selected filters"}
+                </p>
               </div>
             )}
           </div>
