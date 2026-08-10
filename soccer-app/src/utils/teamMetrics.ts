@@ -65,3 +65,27 @@ export function performanceLabel(stats: TeamStats): PerformanceLabel {
   }
   return "Struggling";
 }
+
+/**
+ * A single entry in the performance-label legend.
+ */
+export interface PerformanceLegendEntry {
+  /** The qualitative label. */
+  label: PerformanceLabel;
+  /** Human-readable description of the win-rate band the label covers. */
+  description: string;
+}
+
+/**
+ * Legend describing the win-rate bands behind each performance label.
+ *
+ * Kept alongside {@link performanceLabel} so the copy shown to users stays in
+ * sync with the thresholds used to compute the label. Ordered from strongest
+ * to weakest.
+ */
+export const performanceLegend: readonly PerformanceLegendEntry[] = [
+  { label: "Elite", description: "Win rate 70% or higher" },
+  { label: "Strong", description: "Win rate 50–69%" },
+  { label: "Average", description: "Win rate 30–49%" },
+  { label: "Struggling", description: "Win rate below 30%" },
+];
