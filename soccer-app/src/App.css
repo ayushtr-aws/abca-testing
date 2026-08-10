@@ -168,6 +168,46 @@
   font-weight: 600;
 }
 
+/* ===== Filter Summary ===== */
+.filter-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #334155;
+  background: #1e293b;
+}
+
+.active-filter-count {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.clear-filters-btn {
+  background: #0f172a;
+  border: 1px solid #334155;
+  color: #bfdbfe;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-filters-btn:hover:not(:disabled) {
+  background: #1e40af;
+  border-color: #3b82f6;
+  color: #e2e8f0;
+}
+
+.clear-filters-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 .team-list {
   overflow-y: auto;
   flex: 1;
