@@ -31,6 +31,16 @@ function App() {
     window.history.replaceState(null, "", newUrl);
   }, [searchQuery, country, sortKey]);
 
+  const trimmedSearch = searchQuery.trim();
+  const hasSearchFilter = trimmedSearch !== "";
+  const hasCountryFilter = country !== ALL_COUNTRIES;
+  const hasActiveFilters = hasSearchFilter || hasCountryFilter;
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setCountry(ALL_COUNTRIES);
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -63,8 +73,15 @@ function App() {
               <select
                 id="country-filter"
                 className="country-filter"
+                aria-label="Filter teams by country"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Escape" && country !== ALL_COUNTRIES) {
+                    e.preventDefault();
+                    setCountry(ALL_COUNTRIES);
+                  }
+                }}
               >
                 <option value={ALL_COUNTRIES}>All countries</option>
                 {countries.map((c) => (
@@ -86,6 +103,52 @@ function App() {
                 </button>
               ))}
             </div>
+
+            {hasActiveFilters && (
+              <div
+                className="active-filters"
+                role="status"
+                aria-live="polite"
+              >
+                <span className="active-filters-label">
+                  {filteredTeams.length}{" "}
+                  {filteredTeams.length === 1 ? "team" : "teams"}
+                </span>
+                {hasCountryFilter && (
+                  <span className="filter-chip">
+                    {country}
+                    <button
+                      type="button"
+                      className="filter-chip-remove"
+                      aria-label={`Clear country filter: ${country}`}
+                      onClick={() => setCountry(ALL_COUNTRIES)}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                {hasSearchFilter && (
+                  <span className="filter-chip">
+                    “{trimmedSearch}”
+                    <button
+                      type="button"
+                      className="filter-chip-remove"
+                      aria-label={`Clear search filter: ${trimmedSearch}`}
+                      onClick={() => setSearchQuery("")}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )}
+                <button
+                  type="button"
+                  className="clear-filters-btn"
+                  onClick={clearFilters}
+                >
+                  Clear all
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="team-list">
