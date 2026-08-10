@@ -99,6 +99,37 @@
   border-color: #3b82f6;
 }
 
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.country-filter {
+  flex: 1;
+  box-sizing: border-box;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: #e2e8f0;
+  font-size: 0.75rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.country-filter:focus {
+  border-color: #3b82f6;
+}
+
 .sort-controls {
   display: flex;
   align-items: center;
