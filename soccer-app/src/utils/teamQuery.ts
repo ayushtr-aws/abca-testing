@@ -2,6 +2,19 @@ import type { Team } from "../data/teams";
 
 export type SortKey = "points" | "goals" | "name" | "league";
 
+/** All valid sort keys, in display order. */
+export const SORT_KEYS: readonly SortKey[] = [
+  "points",
+  "goals",
+  "name",
+  "league",
+];
+
+/** Type guard: returns true if the given value is a valid SortKey. */
+export function isSortKey(value: unknown): value is SortKey {
+  return typeof value === "string" && (SORT_KEYS as readonly string[]).includes(value);
+}
+
 /** Sentinel value representing the "All countries" filter option. */
 export const ALL_COUNTRIES = "all";
 
