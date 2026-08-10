@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { teams } from "./data/teams";
 import { TeamCard } from "./components/TeamCard";
 import { TeamDetail } from "./components/TeamDetail";
@@ -8,18 +8,28 @@ import {
   ALL_COUNTRIES,
   type SortKey,
 } from "./utils/teamQuery";
+import { buildQueryString, parseControls } from "./utils/urlState";
 import "./App.css";
+
+const countries = getCountries(teams);
+const initialControls = parseControls(window.location.search, countries);
 
 function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortKey, setSortKey] = useState<SortKey>("points");
-  const [country, setCountry] = useState<string>(ALL_COUNTRIES);
+  const [searchQuery, setSearchQuery] = useState(initialControls.searchQuery);
+  const [sortKey, setSortKey] = useState<SortKey>(initialControls.sortKey);
+  const [country, setCountry] = useState<string>(initialControls.country);
 
-  const countries = getCountries(teams);
   const selectedTeam = teams.find((t) => t.id === selectedTeamId) ?? teams[0];
 
   const filteredTeams = queryTeams(teams, searchQuery, sortKey, country);
+
+  // Keep the URL query parameters in sync with the controls without reloading.
+  useEffect(() => {
+    const query = buildQueryString({ searchQuery, country, sortKey });
+    const newUrl = `${window.location.pathname}${query}${window.location.hash}`;
+    window.history.replaceState(null, "", newUrl);
+  }, [searchQuery, country, sortKey]);
 
   return (
     <div className="app">
