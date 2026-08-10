@@ -2,9 +2,8 @@ import { useState } from "react";
 import { teams } from "./data/teams";
 import { TeamCard } from "./components/TeamCard";
 import { TeamDetail } from "./components/TeamDetail";
+import { queryTeams, type SortKey } from "./utils/teamQuery";
 import "./App.css";
-
-type SortKey = "points" | "goals" | "name" | "league";
 
 function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
@@ -13,27 +12,7 @@ function App() {
 
   const selectedTeam = teams.find((t) => t.id === selectedTeamId) ?? teams[0];
 
-  const filteredTeams = teams
-    .filter(
-      (team) =>
-        team.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        team.league.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        team.country.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    .sort((a, b) => {
-      switch (sortKey) {
-        case "points":
-          return b.stats.points - a.stats.points;
-        case "goals":
-          return b.stats.goalsFor - a.stats.goalsFor;
-        case "name":
-          return a.name.localeCompare(b.name);
-        case "league":
-          return a.league.localeCompare(b.league);
-        default:
-          return 0;
-      }
-    });
+  const filteredTeams = queryTeams(teams, searchQuery, sortKey);
 
   return (
     <div className="app">
