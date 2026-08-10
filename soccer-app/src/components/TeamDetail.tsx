@@ -1,5 +1,6 @@
 import type { Team } from "../data/teams";
 import { goalDifference, winRate } from "../utils/teamMetrics";
+import { TeamInsights } from "./TeamInsights";
 
 interface TeamDetailProps {
   team: Team;
@@ -81,6 +82,8 @@ export function TeamDetail({ team }: TeamDetailProps) {
       </div>
 
       <div className="team-detail-body">
+        <TeamInsights teamName={team.name} stats={stats} />
+
         <section className="stats-section">
           <h3>Season Statistics</h3>
           <div className="stats-grid">
