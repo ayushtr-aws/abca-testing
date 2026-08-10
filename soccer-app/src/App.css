@@ -515,6 +515,136 @@
   background: #dc2626;
 }
 
+/* ===== Insights Panel ===== */
+.insights-summary {
+  margin: -8px 0 16px;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.insights-summary strong {
+  color: #f1f5f9;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 0;
+}
+
+.insight-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-left: 4px solid #64748b;
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+
+.insight-label {
+  display: block;
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.insight-value {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.insight-figure {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1;
+}
+
+.insight-figure-label {
+  font-size: 1.25rem;
+}
+
+.insight-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #cbd5e1;
+}
+
+.insight-note {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Goal-difference trend accents (colour reinforces the text tag, not the
+   sole signal). */
+.insight-positive {
+  border-left-color: #16a34a;
+}
+
+.insight-positive .insight-figure {
+  color: #4ade80;
+}
+
+.insight-negative {
+  border-left-color: #dc2626;
+}
+
+.insight-negative .insight-figure {
+  color: #f87171;
+}
+
+.insight-neutral {
+  border-left-color: #d97706;
+}
+
+.insight-neutral .insight-figure {
+  color: #fb923c;
+}
+
+/* Performance-label accents. */
+.insight-rating-elite {
+  border-left-color: #22d3ee;
+}
+
+.insight-rating-elite .insight-figure {
+  color: #22d3ee;
+}
+
+.insight-rating-strong {
+  border-left-color: #4ade80;
+}
+
+.insight-rating-strong .insight-figure {
+  color: #4ade80;
+}
+
+.insight-rating-average {
+  border-left-color: #fb923c;
+}
+
+.insight-rating-average .insight-figure {
+  color: #fb923c;
+}
+
+.insight-rating-struggling {
+  border-left-color: #f87171;
+}
+
+.insight-rating-struggling .insight-figure {
+  color: #f87171;
+}
+
 /* ===== Highlights ===== */
 .highlights-grid {
   display: grid;
@@ -660,6 +790,10 @@
   }
 
   .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-grid {
     grid-template-columns: 1fr;
   }
 
