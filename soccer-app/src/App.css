@@ -195,7 +195,7 @@
   outline-offset: 1px;
 }
 
-.clear-filters-btn {
+.active-filters .clear-filters-btn {
   margin-left: auto;
   background: transparent;
   border: none;
@@ -208,11 +208,11 @@
   transition: color 0.2s;
 }
 
-.clear-filters-btn:hover {
+.active-filters .clear-filters-btn:hover {
   color: #e2e8f0;
 }
 
-.clear-filters-btn:focus-visible {
+.active-filters .clear-filters-btn:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 1px;
   color: #e2e8f0;
@@ -273,7 +273,7 @@
   font-weight: 500;
 }
 
-.clear-filters-btn {
+.filter-summary .clear-filters-btn {
   background: #0f172a;
   border: 1px solid #334155;
   color: #bfdbfe;
@@ -285,13 +285,13 @@
   transition: all 0.2s;
 }
 
-.clear-filters-btn:hover:not(:disabled) {
+.filter-summary .clear-filters-btn:hover:not(:disabled) {
   background: #1e40af;
   border-color: #3b82f6;
   color: #e2e8f0;
 }
 
-.clear-filters-btn:disabled {
+.filter-summary .clear-filters-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
