@@ -1,4 +1,5 @@
 import type { Team } from "../data/teams";
+import { goalDifference } from "../utils/teamMetrics";
 
 interface TeamCardProps {
   team: Team;
@@ -8,7 +9,7 @@ interface TeamCardProps {
 
 export function TeamCard({ team, isSelected, onClick }: TeamCardProps) {
   const { stats } = team;
-  const goalDiff = stats.goalsFor - stats.goalsAgainst;
+  const goalDiff = goalDifference(stats);
 
   return (
     <button
