@@ -8,7 +8,12 @@ import {
   ALL_COUNTRIES,
   type SortKey,
 } from "./utils/teamQuery";
-import { buildQueryString, parseControls } from "./utils/urlState";
+import {
+  buildQueryString,
+  countActiveFilters,
+  parseControls,
+  DEFAULT_CONTROLS,
+} from "./utils/urlState";
 import "./App.css";
 
 const countries = getCountries(teams);
@@ -23,6 +28,15 @@ function App() {
   const selectedTeam = teams.find((t) => t.id === selectedTeamId) ?? teams[0];
 
   const filteredTeams = queryTeams(teams, searchQuery, sortKey, country);
+
+  const activeFilterCount = countActiveFilters({ searchQuery, country, sortKey });
+
+  // Restore all controls to their defaults; the URL sync effect clears the query.
+  const handleClearFilters = () => {
+    setSearchQuery(DEFAULT_CONTROLS.searchQuery);
+    setCountry(DEFAULT_CONTROLS.country);
+    setSortKey(DEFAULT_CONTROLS.sortKey);
+  };
 
   // Keep the URL query parameters in sync with the controls without reloading.
   useEffect(() => {
@@ -86,6 +100,24 @@ function App() {
                 </button>
               ))}
             </div>
+          </div>
+
+          <div className="filter-summary">
+            <span className="active-filter-count">
+              {activeFilterCount > 0
+                ? `${activeFilterCount} active ${
+                    activeFilterCount === 1 ? "filter" : "filters"
+                  }`
+                : "No active filters"}
+            </span>
+            <button
+              type="button"
+              className="clear-filters-btn"
+              onClick={handleClearFilters}
+              disabled={activeFilterCount === 0}
+            >
+              Clear filters
+            </button>
           </div>
 
           <div className="team-list">
