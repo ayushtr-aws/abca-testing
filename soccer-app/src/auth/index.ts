@@ -14,3 +14,26 @@ export {
   deriveAuthState,
   isAuthenticated,
 } from "./validation";
+
+export type { AuthErrorCode, AuthError, AuthResult } from "./errors";
+export {
+  ok,
+  fail,
+  InvalidCredentialsError,
+  AuthNetworkError,
+} from "./errors";
+
+export type { KeyValueStore, SessionStore } from "./storage";
+export {
+  SESSION_STORAGE_KEY,
+  BrowserSessionStore,
+  MemoryKeyValueStore,
+  createDefaultSessionStore,
+} from "./storage";
+
+export type {
+  Credentials,
+  CredentialAuthenticator,
+  AuthServiceOptions,
+} from "./service";
+export { AuthService, createAuthService } from "./service";
