@@ -10,7 +10,7 @@ function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortKey, setSortKey] = useState<SortKey>("points");
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   // Apply / remove the dark-mode class on <html> whenever the toggle changes
   useEffect(() => {
