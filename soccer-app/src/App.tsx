@@ -47,6 +47,10 @@ function App() {
 
   return (
     <div className="app">
+      <div className="screenshot-test-banner" role="status">
+        Jira screenshot test 698
+      </div>
+
       <header className="app-header">
         <div className="header-left">
           <span className="header-icon">⚽</span>
