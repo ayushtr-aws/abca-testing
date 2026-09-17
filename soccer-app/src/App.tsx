@@ -68,6 +68,10 @@ function App() {
         </div>
       </header>
 
+      <div className="preview-banner" role="status">
+        Fresh Jira preview test: Sep 17
+      </div>
+
       <div className="app-layout">
         <aside className="sidebar">
           <div className="sidebar-controls">

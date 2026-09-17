@@ -89,12 +89,31 @@
   line-height: 1;
 }
 
+/* ===== Preview Banner ===== */
+.preview-banner {
+  min-height: 36px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--accent-bright);
+  color: #ffffff;
+  border-bottom: 1px solid var(--header-border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  text-align: center;
+  line-height: 1.2;
+}
+
 /* ===== Layout ===== */
 .app-layout {
   display: flex;
   flex: 1;
   overflow: hidden;
-  height: calc(100vh - 73px);
+  height: calc(100vh - 73px - 36px);
 }
 
 /* ===== Sidebar ===== */
@@ -685,6 +704,11 @@
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+  .preview-banner {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
   .app-layout {
     flex-direction: column;
     height: auto;
