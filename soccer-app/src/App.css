@@ -89,6 +89,37 @@
   line-height: 1;
 }
 
+/* ===== Login Button ===== */
+.login-btn {
+  background: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 26px;
+  padding: 11px 26px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, border-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.login-btn:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: scale(1.03);
+}
+
+.login-btn:active {
+  transform: scale(0.97);
+}
+
+.login-btn-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
 /* ===== Layout ===== */
 .app-layout {
   display: flex;

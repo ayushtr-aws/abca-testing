@@ -65,6 +65,10 @@ function App() {
             <span className="theme-toggle-icon">{isDarkMode ? "☀️" : "🌙"}</span>
             {isDarkMode ? "Light mode" : "Dark mode"}
           </button>
+          <button className="login-btn" type="button" aria-label="Log in">
+            <span className="login-btn-icon">👤</span>
+            Log in
+          </button>
         </div>
       </header>
 
