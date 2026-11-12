@@ -1,4 +1,5 @@
 import type { Team } from "../data/teams";
+import { goalDifference, winRate } from "../utils/teamMetrics";
 
 interface TeamDetailProps {
   team: Team;
@@ -32,8 +33,8 @@ const positionColors: Record<string, string> = {
 
 export function TeamDetail({ team }: TeamDetailProps) {
   const { stats } = team;
-  const goalDiff = stats.goalsFor - stats.goalsAgainst;
-  const winRate = ((stats.won / stats.played) * 100).toFixed(0);
+  const goalDiff = goalDifference(stats);
+  const winRatePercent = (winRate(stats) * 100).toFixed(0);
 
   const sortedPlayers = [...team.players].sort(
     (a, b) => (positionOrder[a.position] ?? 99) - (positionOrder[b.position] ?? 99)
@@ -104,7 +105,7 @@ export function TeamDetail({ team }: TeamDetailProps) {
               <span className="stat-card-label">Lost</span>
             </div>
             <div className="stat-card">
-              <span className="stat-card-value">{winRate}%</span>
+              <span className="stat-card-value">{winRatePercent}%</span>
               <span className="stat-card-label">Win Rate</span>
             </div>
             <div className="stat-card">
