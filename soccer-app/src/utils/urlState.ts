@@ -53,6 +53,19 @@ export function parseControls(
 }
 
 /**
+ * Counts how many of the browser controls differ from their default values.
+ * Used to surface an "active filter count" in the UI. The search query, country
+ * and sort key each contribute at most one to the total.
+ */
+export function countActiveFilters(controls: BrowserControls): number {
+  let count = 0;
+  if (controls.searchQuery !== DEFAULT_CONTROLS.searchQuery) count += 1;
+  if (controls.country !== DEFAULT_CONTROLS.country) count += 1;
+  if (controls.sortKey !== DEFAULT_CONTROLS.sortKey) count += 1;
+  return count;
+}
+
+/**
  * Builds a URL query string (including the leading "?" when non-empty) that
  * represents the given controls. Values equal to their defaults are omitted to
  * keep the URL clean.
