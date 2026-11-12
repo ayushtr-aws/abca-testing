@@ -191,6 +191,13 @@ export function TeamDetail({ team }: TeamDetailProps) {
                         src={player.imageUrl}
                         alt={player.name}
                         className="player-avatar"
+                        onError={(e) => {
+                          const target = e.currentTarget;
+                          const fallback = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name)}&background=334155&color=ffffff&size=64&bold=true`;
+                          if (target.src !== fallback) {
+                            target.src = fallback;
+                          }
+                        }}
                       />
                       <span className="player-name">{player.name}</span>
                     </td>
