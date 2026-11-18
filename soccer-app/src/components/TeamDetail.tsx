@@ -1,9 +1,12 @@
 import type { Team } from "../data/teams";
 
+/** Props for {@link TeamDetail}. */
 interface TeamDetailProps {
+  /** Team to show in full. */
   team: Team;
 }
 
+/** Sort order for squad positions (goalkeeper first, striker last). */
 const positionOrder: Record<string, number> = {
   GK: 0,
   RB: 1,
@@ -17,6 +20,7 @@ const positionOrder: Record<string, number> = {
   ST: 9,
 };
 
+/** Badge colour for each squad position, grouped by line (GK, defence, midfield, attacking midfield, attack). */
 const positionColors: Record<string, string> = {
   GK: "#f59e0b",
   RB: "#10b981",
@@ -30,6 +34,24 @@ const positionColors: Record<string, string> = {
   ST: "#ef4444",
 };
 
+/**
+ * Full detail panel for one team, shown in the main content area.
+ *
+ * Renders:
+ * - a header tinted with the team's colours, with logo, name, league,
+ *   country, founding year, stadium (with capacity) and manager;
+ * - a season statistics grid (points, played, W/D/L, win rate, goals for and
+ *   against, goal difference) and a stacked win/draw/loss form bar;
+ * - highlight cards for the top scorer and top assister;
+ * - a squad table sorted by position, with colour-coded position badges.
+ *
+ * Win rate and goal difference are calculated from `team.stats` on each
+ * render. The component assumes `team.players` is not empty and
+ * `team.stats.played` is greater than zero.
+ *
+ * @param props - See {@link TeamDetailProps}.
+ * @returns A `<div className="team-detail">` element with the team's details.
+ */
 export function TeamDetail({ team }: TeamDetailProps) {
   const { stats } = team;
   const goalDiff = stats.goalsFor - stats.goalsAgainst;

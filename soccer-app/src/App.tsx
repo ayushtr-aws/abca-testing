@@ -4,8 +4,24 @@ import { TeamCard } from "./components/TeamCard";
 import { TeamDetail } from "./components/TeamDetail";
 import "./App.css";
 
+/** Field the sidebar team list can be sorted by. */
 type SortKey = "points" | "goals" | "name" | "league";
 
+/**
+ * Root component of the soccer-app.
+ *
+ * Holds all application state: the selected team, the sidebar search
+ * query, the active sort key and the dark-mode toggle. It filters and sorts
+ * the static `teams` data, shows the result as a list of {@link TeamCard}s
+ * in the sidebar, and shows the selected team in a {@link TeamDetail} panel.
+ * While dark mode is on, a `useEffect` adds the `dark-mode` class to
+ * `<html>` (dark mode is on by default).
+ *
+ * Takes no props.
+ *
+ * @returns The full page layout: header, sidebar (search, sort controls,
+ *   team list) and main detail panel.
+ */
 function App() {
   const [selectedTeamId, setSelectedTeamId] = useState<number>(teams[0].id);
   const [searchQuery, setSearchQuery] = useState("");
