@@ -21,3 +21,5 @@ Then open the URL that Vite prints (usually http://localhost:5173) in your brows
 ## Reference
 
 - [GitHub Hello World quickstart](https://docs.github.com/en/get-started/quickstart/hello-world)
+
+Last verified: 2026-11-18
