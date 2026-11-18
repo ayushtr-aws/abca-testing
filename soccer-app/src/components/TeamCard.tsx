@@ -1,11 +1,27 @@
 import type { Team } from "../data/teams";
 
+/** Props for {@link TeamCard}. */
 interface TeamCardProps {
+  /** Team to summarise. */
   team: Team;
+  /** Whether this card is the selected team; adds the `selected` CSS class. */
   isSelected: boolean;
+  /** Runs when the card is clicked; the parent uses it to select this team. */
   onClick: () => void;
 }
 
+/**
+ * Compact, clickable summary of one team, used in the sidebar team list.
+ *
+ * Shows the team's logo, name, league, country and points, plus a stats row
+ * with wins, draws, losses and goal difference (coloured green when
+ * positive, red when negative). The left border uses the team's secondary
+ * colour, then its primary colour, then a fallback blue, skipping any
+ * colour that is white (`#FFFFFF`).
+ *
+ * @param props - See {@link TeamCardProps}.
+ * @returns A `<button>` element containing the team summary.
+ */
 export function TeamCard({ team, isSelected, onClick }: TeamCardProps) {
   const { stats } = team;
   const goalDiff = stats.goalsFor - stats.goalsAgainst;
